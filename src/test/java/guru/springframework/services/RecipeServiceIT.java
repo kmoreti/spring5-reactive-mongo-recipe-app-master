@@ -40,13 +40,13 @@ public class RecipeServiceIT {
     @Test
     public void testSaveOfDescription() {
         //given
-        Iterable<Recipe> recipes = recipeRepository.findAll();
-        Recipe testRecipe = recipes.iterator().next();
-        RecipeCommand testRecipeCommand = recipeToRecipeCommand.convert(testRecipe);
+        final Iterable<Recipe> recipes = recipeRepository.findAll();
+        final Recipe testRecipe = recipes.iterator().next();
+        final RecipeCommand testRecipeCommand = recipeToRecipeCommand.convert(testRecipe);
 
         //when
         testRecipeCommand.setDescription(NEW_DESCRIPTION);
-        RecipeCommand savedRecipeCommand = recipeService.saveRecipeCommand(testRecipeCommand);
+        final RecipeCommand savedRecipeCommand = recipeService.saveRecipeCommand(testRecipeCommand).block();
 
         //then
         assertEquals(NEW_DESCRIPTION, savedRecipeCommand.getDescription());
