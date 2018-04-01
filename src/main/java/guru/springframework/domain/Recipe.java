@@ -31,13 +31,13 @@ public class Recipe {
     private Notes notes;
     private Set<Category> categories = new HashSet<>();
 
-    public void setNotes(Notes notes) {
+    public void setNotes(final Notes notes) {
         if (notes != null) {
             this.notes = notes;
         }
     }
 
-    public Recipe addIngredient(Ingredient ingredient){
+    public Recipe addIngredient(final Ingredient ingredient) {
         this.ingredients.add(ingredient);
         return this;
     }
